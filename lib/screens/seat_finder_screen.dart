@@ -1,10 +1,10 @@
 import 'package:cruv_assignment/provider/selection_provider.dart';
-import 'package:cruv_assignment/widgets/search_bar.dart';
+import 'package:cruv_assignment/functionality/search_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import '../widgets/seats.dart';
-import '../widgets/down_seats.dart';
+import '../functionality/seats.dart';
+import '../functionality/down_seats.dart';
 
 class SeatFinderHome extends StatefulWidget {
   SeatFinderHome({super.key});
@@ -25,10 +25,6 @@ class _SeatFinderHomeState extends State<SeatFinderHome> {
   getCoach(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     return Consumer<SeatSelectedProvider>(builder: (context, value, child) {
-      if (isInit) {
-        Scrollable.ensureVisible(
-            itemKeys[value.selectedCoachNumber - 1].currentContext!);
-      }
       isInit = true;
       return ListView.builder(
           physics: const NeverScrollableScrollPhysics(),
@@ -39,16 +35,10 @@ class _SeatFinderHomeState extends State<SeatFinderHome> {
               key: itemKeys[index],
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(
-                  height: height / 50,
-                ),
                 getSection(0, value.coachMap['Coach ${index + 1}']),
                 getSection(1, value.coachMap['Coach ${index + 1}']),
                 getSection(2, value.coachMap['Coach ${index + 1}']),
-                getSection(3, value.coachMap['Coach ${index + 1}']),
-                SizedBox(
-                  height: height / 60,
-                ),
+                  getSection(3, value.coachMap['Coach ${index + 1}']),
               ],
             );
           });
