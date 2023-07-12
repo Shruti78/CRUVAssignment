@@ -4,7 +4,7 @@ This is a simple one page UI of seat finder application.
 
 2. We used provider to update our seat number as per choice.
 
-3. We made model class for two things:- 1. getting seat list. 2. For higlighting required seat.
+3. We made model class for two things:- 1. getting seat list. 2. For highlighting required seat.
 
 4. We have made functionality folder in which searching bar , down seats and upper seats are made.
 
