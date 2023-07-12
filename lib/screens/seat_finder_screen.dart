@@ -59,7 +59,7 @@ class _SeatFinderHomeState extends State<SeatFinderHome> {
               ],
             ),
             SeatWidget(seat: seats[8 * number + 6])
-          ],
+          ]
         ),
         const SizedBox(
           height: 20,
