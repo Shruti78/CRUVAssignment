@@ -28,7 +28,9 @@ class _SeatWidgetInvertedState extends State<SeatWidgetInverted> {
             height: MediaQuery.of(context).size.height / 20,
             width: MediaQuery.of(context).size.height / 20,
             decoration: BoxDecoration(
-                color: widget.seat.highlight ? Color.fromARGB(255, 84, 196, 233) : kAccent1,
+                color: widget.seat.highlight
+                    ? Color.fromARGB(255, 84, 196, 233)
+                    : kAccent1,
                 borderRadius: BorderRadius.circular(2.5)),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,

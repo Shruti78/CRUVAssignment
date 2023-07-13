@@ -7,8 +7,9 @@ class SearchingBar extends StatelessWidget {
   SearchingBar({Key? key}) : super(key: key);
   final TextEditingController _seatNumberController = TextEditingController();
   final ValueNotifier<String> _selectedOption =
-      ValueNotifier<String>('Coach 1');
+      ValueNotifier<String>('1');
   final ValueNotifier<bool> _errorVisible = ValueNotifier<bool>(false);
+  final List<String> _options = ['1','2','3'];
   double borderRadius = 50;
   String getCoach() {
     return _selectedOption.value;
@@ -42,7 +43,34 @@ class SearchingBar extends StatelessWidget {
                     ),
                   ),
                 ),
+                child: DropdownButtonHideUnderline(
+                  child: ValueListenableBuilder(
+                      valueListenable: _selectedOption,
+                      builder: (context, value, child) {
+                        return DropdownButton(
+                          iconEnabledColor: kAccent1,
+                          iconDisabledColor: kAccent1,
+                          value: _selectedOption.value,
+                          onChanged: (newValue) {
+                            //TODO: add set state
+                            _selectedOption.value = newValue.toString();
+                          },
+                          items: _options.map((option) {
+                            return DropdownMenuItem(
+                              value: option,
+                              child: Text(
+                                option,
+                                style:
+                                    kTextStyleDefault.copyWith(color: kAccent2),
+                              ),
+                            );
+                          }).toList(),
+                        );
+                      }),
+                ),
+
               ),
+              
               Expanded(
                 child: TextField(
                   controller: _seatNumberController,

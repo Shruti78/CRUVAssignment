@@ -1,30 +1,27 @@
-import 'package:cruv_assignment/provider/selection_provider.dart';
+import 'package:cruv_assignment/functionality/down_seats.dart';
 import 'package:cruv_assignment/functionality/search_bar.dart';
+import 'package:cruv_assignment/functionality/seats.dart';
+import 'package:cruv_assignment/provider/selection_provider.dart';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import '../functionality/seats.dart';
-import '../functionality/down_seats.dart';
 
-class SeatFinderHome extends StatefulWidget {
+
+class SeatFinderHome extends StatelessWidget {
+  final TextEditingController seatNumberController = TextEditingController();
+  final SearchingBar searchBar = SearchingBar();
+  final itemKeys = [GlobalKey(), GlobalKey(), GlobalKey()];
   SeatFinderHome({super.key});
 
-  @override
-  State<SeatFinderHome> createState() => _SeatFinderHomeState();
-}
-
-class _SeatFinderHomeState extends State<SeatFinderHome> {
-  final TextEditingController seatNumberController = TextEditingController();
-
-  final SearchingBar searchBar = SearchingBar();
-
-  final itemKeys = [GlobalKey(), GlobalKey(), GlobalKey()];
-
   bool isInit = false;
-
   getCoach(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     return Consumer<SeatSelectedProvider>(builder: (context, value, child) {
+      if (isInit) {
+        Scrollable.ensureVisible(
+            itemKeys[value.selectedCoachNumber - 1].currentContext!);
+      }
       isInit = true;
       return ListView.builder(
           physics: const NeverScrollableScrollPhysics(),
@@ -35,10 +32,23 @@ class _SeatFinderHomeState extends State<SeatFinderHome> {
               key: itemKeys[index],
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                Center(
+                  child: Text(
+                    'Compartment ${index + 1}',
+                    style:
+                        GoogleFonts.breeSerif(color: Colors.white, fontSize: 25),
+                  ),
+                ),
+                SizedBox(
+                  height: height / 30,
+                ),
                 getSection(0, value.coachMap['Coach ${index + 1}']),
                 getSection(1, value.coachMap['Coach ${index + 1}']),
                 getSection(2, value.coachMap['Coach ${index + 1}']),
-                  getSection(3, value.coachMap['Coach ${index + 1}']),
+                getSection(3, value.coachMap['Coach ${index + 1}']),
+                SizedBox(
+                  height: height / 15,
+                )
               ],
             );
           });
@@ -59,7 +69,7 @@ class _SeatFinderHomeState extends State<SeatFinderHome> {
               ],
             ),
             SeatWidget(seat: seats[8 * number + 6])
-          ]
+          ],
         ),
         const SizedBox(
           height: 20,
@@ -85,9 +95,13 @@ class _SeatFinderHomeState extends State<SeatFinderHome> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          'Seat Finder',
-          style: GoogleFonts.lato(fontSize: 40),
+        title: Center(
+          child: Center(
+            child: Text(
+              'Seat Finder',
+              style: GoogleFonts.righteous(fontSize: 40),
+            ),
+          ),
         ),
         elevation: 0,
       ),
@@ -100,7 +114,7 @@ class _SeatFinderHomeState extends State<SeatFinderHome> {
               SizedBox(
                 height: MediaQuery.of(context).size.height / 15,
               ),
-              getCoach(context),
+              getCoach(context)
             ],
           ),
         ),
