@@ -1,16 +1,12 @@
-# cruv_assignment
+This is a simple one page UI of seat finder application.
 
-A Flutter Project created for CRUV as an internship selection assignment.
+1. As shown in UI there is searching seat and identifing the location of the seat and birth in application in the application.
 
-## Getting Started
+2. We used provider to update our seat number as per choice.
 
-This project is a starting point for a Flutter application.
+3. We made model class for two things:- 1. getting seat list. 2. For highlighting required seat.
 
-A few resources to get you started if this is your first Flutter project:
+4. We have made functionality folder in which searching bar , down seats and upper seats are made.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+5. In seat finder screen there is we just used listview to show every section of seats in row with given seat number and birth.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
