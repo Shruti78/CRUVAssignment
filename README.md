@@ -1,8 +1,8 @@
-This is a simple one page UI of seat finder application.
+This is a simple one page responsive UI of seat finder application.
 
-1. As shown in UI there is searching seat and identifing the location of the seat and birth in application in the application.
+1. As shown in UI there is and option of searching seat and identifing the location of the seat and birth in application in the application according to compartment number.
 
-2. We used provider to update our seat number as per choice.
+2. We used provider to update our seat number and compartment number as per choice.
 
 3. We made model class for two things:- 1. getting seat list. 2. For highlighting required seat.
 
