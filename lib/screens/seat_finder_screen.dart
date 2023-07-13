@@ -99,7 +99,7 @@ class SeatFinderHome extends StatelessWidget {
           child: Center(
             child: Text(
               'Seat Finder',
-              style: GoogleFonts.righteous(fontSize: 40),
+              style: GoogleFonts.lato(fontSize: 40),
             ),
           ),
         ),
